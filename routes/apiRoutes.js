@@ -9,7 +9,7 @@ module.exports = function (app) {
     app.get("/scrape", function (req, res) {
         mongoose.connection.db.dropCollection('articles', function (err, result) { });
 
-        request("https://www.thoughtco.com/arts-music-recreation-4132958", function (error, response, html) {
+        request("https://www.thoughtco.com/sciences-math-4132465", function (error, response, html) {
 
 
             console.log("Scrape Complete");
@@ -75,7 +75,7 @@ module.exports = function (app) {
             })
     });
 
-    // Route for saving/updating an Article's associated Note
+    // route for saving and updating an article's associated note
     app.put("/api/saved/:id", function (req, res) {
 
         db.Article.update({ _id: mongojs.ObjectId(req.params.id) }, {
