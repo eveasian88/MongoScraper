@@ -14,3 +14,54 @@ $.getJSON("/api/saved", function (data) {
     }
 });
 
+$('#scrape-btn').on('click', function () {
+    $.ajax({
+        method: "GET",
+        url: "/scrape"
+    })
+        .then(function (data) {
+            console.log(data);
+            location.reload();
+        });
+})
+
+$('#articles').on("click", '.save-btn', function () {
+    var thisId = $(this).closest('div.card').attr("data-id");
+    var thisCard = $(this).closest('div.card');
+    console.log(thisCard.find('h4').text());
+
+    $.ajax({
+        method: "PUT",
+        url: "/api/saved/" + thisId,
+
+    })
+        .then(function (data) {
+            console.log(data);
+            location.reload();
+        });
+
+});
+
+$('#saved-articles').on("click", '.del-save-btn', function () {
+    console.log('working')
+    var thisId = $(this).closest('div.card').attr("data-id");
+
+    $.ajax({
+        method: "PUT",
+        url: "/api/unsaved/" + thisId,
+
+    })
+        .then(function (data) {
+            console.log(data);
+            location.reload();
+        });
+
+});
+
+$('#saved-toggle').click(function () {
+    $('#saved-articles').slideToggle();
+})
+
+$('#show-toggle').click(function () {
+    $('#articles').slideToggle();
+})
