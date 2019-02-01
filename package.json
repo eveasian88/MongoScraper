@@ -18,9 +18,14 @@
   "homepage": "https://github.com/eveasian88/MongoScraper#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^5.4.8"
+    "mongojs": "^2.6.0",
+    "mongoose": "^5.4.8",
+    "morgan": "^1.9.1",
+    "npm": "^6.7.0",
+    "request": "^2.88.0"
   }
 }
