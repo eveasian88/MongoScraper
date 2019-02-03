@@ -31,11 +31,11 @@ conn.once('open', function(err) {
 })
 
 // routes
-require("./routes/apiRoutes")(app);
+// require("./routes/apiRoutes")(app);
 
-// const routes = require("./routes/apiRoutes");
+const routes = require("./routes/apiRoutes");
 
-// app.use(routes);
+app.use(routes);
 
 
 // start the server
@@ -43,4 +43,4 @@ app.listen(PORT, function() {
     console.log("App is listening on port " + PORT + "!");
 });
 
-module.exports = app; 
+// module.exports = app; 
