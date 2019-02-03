@@ -1,6 +1,11 @@
-header {
-    background: url("../images/coffeeSpoon.jpg");
-    /* background-position: top; */
+html {
+    position: relative;
+    min-height: 100%;
+}
+  
+body {
+    margin-bottom: 80px;
+    background-image: url("../images/coffeeSpoon.jpg");
 }
 
 .text-white {
