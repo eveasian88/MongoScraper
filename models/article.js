@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 
+// save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
@@ -18,6 +19,10 @@ var ArticleSchema = new Schema({
     saved: {
         type: Boolean,
         default: false
+    },
+    note: {
+        type: Schema.Types.ObjectId,
+        ref: "Note"
     }
 });
 
