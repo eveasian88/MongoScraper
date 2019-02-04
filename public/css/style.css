@@ -2,11 +2,16 @@ html {
     position: relative;
     min-height: 100%;
 }
-  
-body {
-    margin-bottom: 80px;
-    background-image: url("../images/coffeePassport.jpg");
+
+header {
+    background-image: url("../images/coffeeComputer.jpg");
+    background-position: top; 
 }
+
+/* body {
+    margin-bottom: 80px;
+    background-image: url("../images/coffeeComputer.jpg");
+} */
 
 .text-white {
     font-weight:700;

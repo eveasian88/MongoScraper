@@ -1,3 +1,5 @@
+// class solved starter sample with changes for thoughtco scrape
+
 // var db = require("../models");
 
 // var cheerio = require("cheerio");

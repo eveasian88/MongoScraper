@@ -20,7 +20,7 @@ module.exports = function(app) {
 app.get("/scrape", function(req, res) {
   mongoose.connection.db.dropCollection('articles', function(err, result) {});
 
-  axios.get("https://www.thoughtco.com/arts-music-recreation-4132958", function(error, response, html) {
+  axios.get("https://www.thoughtco.com/languages-4133094", function(error, response, html) {
 
   
   console.log("Scrape Complete");
@@ -86,7 +86,7 @@ app.get("/api/articles/:id", function(req, res) {
   })
 });
 
-// Route for saving/updating an Article's associated Note
+// route for saving/updating an Article's associated Note
 app.put("/api/saved/:id", function(req, res) {
   
   db.Article.update({_id: mongojs.ObjectId(req.params.id)},{

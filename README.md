@@ -1,6 +1,6 @@
 # MongoScraper
 
-Mongo Scraper is a web application that allows users to scrape articles from Thought.Co. The App utilizes Mongoose and Cheerio to scrape articles and allows users to save articles and make notes. 
+Mongo Scraper is a web application that utilizes Mongoose and Cheerio to scrape articles from Thought.Co. Once the articles are scraped, user can save articles to read later and make notes on the articles read. 
 
 
 
