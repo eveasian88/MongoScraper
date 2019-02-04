@@ -1,13 +1,16 @@
-// var db = require("../models");
-// var mongoose = require("mongoose");
-// var mongojs = require("mongojs")
+const express = require("express"); // Import whole express library
+const router = express.Router();  // Create instance of a Router object
 
-// var request = require("request");
-// var cheerio = require("cheerio");
+const db = require("../models");
+const Article = db.Article;
 
-// module.exports = app => {
+// Index Route
+router.get('/', ( req, res ) => {
+  Article.find({})
+    .then( articles => {
+      return res.render('index', { articles: articles }); // Render index.handlebars
+    })
+})
 
-// app.get("/index", (req, res) => {
-//     res.render("index");
-// });
-// }
+// export router to the rest of the project.
+module.exports = router;

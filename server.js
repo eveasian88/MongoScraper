@@ -1,46 +1,55 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var logger = require("morgan");
-var mongoose = require("mongoose");
+// TOOLS
+const express = require("express");
+const bodyParser = require("body-parser");
+const logger = require("morgan");
+const exphbs = require("express-handlebars"); // Handlebars module
+
+// ROUTES
+const htmlRoutes = require("./routes/htmlRoutes");
+const apiRoutes = require("./routes/apiRoutes");
+
+// Import Router Objects
+
+// DATABASE TOOLS
+const mongoose = require("mongoose");
+const DATABASE_URL = process.env.MONGODB_URI || "mongodb://localhost/populate";
+
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+// Configure mongoose with MongoDB
+mongoose.connect( DATABASE_URL, { useNewUrlParser: true, useCreateIndex: true } );
+const conn = mongoose.connection
+
+conn.on("error", error => console.log( "Mongoose Error" ))
+conn.once("open", error => console.log( "Mongoose Connection Successful" ))
+
+// Initialize App
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Configure Middleware for Web Server
+app.use( logger( "dev" ) );   // enable and configure logger
+app.use( bodyParser.urlencoded({ extended: true })); // configure bodyparser for url encoded data
+app.use( bodyParser.json() ); // configure body parser for json formatted data
+
+// configure public folder
+app.use( express.static("public") );
+
+// configure handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 
-var PORT = process.env.PORT || 3000;
+// Use HTML routes first
+app.use('/', htmlRoutes );
+// Use API routes next
+app.use( '/api', apiRoutes );
 
-// require models
-var db = require("./models");
-
-// initialize express
-var app = express();
-
-// configure middleware
-app.use(logger("dev"));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public"));
-
-// connect to mongoDB
-mongoose.connect("mongodb://localhost/populate", {
-    useNewUrlParser: true });
-
-var conn = mongoose.connection;
-
-conn.on('error', function(err) {
-    console.log("Moongoose Error");
-})
-conn.once('open', function(err) {
-    console.log("Mongoose Connection Successful");
-})
-
-// routes
-require("./routes/apiRoutes")(app);
-
-// const routes = require("./routes/apiRoutes");
-
-// app.use(routes);
+app.listen( PORT, () => console.log( "App is listening on " + PORT + "!" ));
 
 
-// start the server
-app.listen(PORT, function() {
-    console.log("App is listening on port " + PORT + "!");
-});
 
-module.exports = app; 
+// server -> router -> controller -> api function || handlebars file
+
+
