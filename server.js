@@ -51,6 +51,18 @@ app.use( '/api', apiRoutes );
 app.listen( PORT, () => console.log( "App is listening on " + PORT + "!" ));
 
 
+var db = require("./models")
+
+db.Article.create(result)
+.then(function (dbArticle) {
+    console.log(dbArticle);
+    console.log('Saved Article.');
+    // res.send();
+})
+.catch(function (err) {
+    console.log('Error :: ', err);
+    // return res.json(err);
+});
 
 // server -> router -> controller -> api function || handlebars file
 
