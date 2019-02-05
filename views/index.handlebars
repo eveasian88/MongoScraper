@@ -20,6 +20,7 @@
 
   <h1 class="text-center my-5">saved articles <i class="fas fa-caret-down" id="saved-toggle"></i></h1>
   <div id="saved-articles" class="row text-center">
+
     {{#if articles }}
       {{#each articles }}
         {{#if this.saved }}
@@ -33,6 +34,7 @@
     {{#if articles}} 
       <h1 class="text-center my-5">all articles <i class="fas fa-caret-down" id="show-toggle"></i></h1>
       <div id="articles" class="row text-center">
+
       {{#each articles}}
         {{#unless this.saved}}
           {{> article_partial }}

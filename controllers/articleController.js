@@ -55,7 +55,6 @@ const articleController = {
             })
     },
     getById: function (req, res) {
-        // db.Article.find({_id: mongojs.ObjectId(req.params.id)})
         const articleId = req.params.id;
 
         db.Article.find({ _id: articleId })
@@ -93,7 +92,21 @@ const articleController = {
         })
     },
     delete: function (req, res) {
-
+        const articleId = req.params.id
+        db.Article.delete(
+            { _id: articleId },
+            {
+                $set: {
+                    saved: true
+                }
+            }
+        )
+        .then(function(dbArticle){
+            res.json(dbArticle)
+        })
+        .catch(function(err){
+            res.json(err);
+        })
     },
 };
 
@@ -101,62 +114,6 @@ module.exports = articleController;
 
 
 
-// app.get("/api/articles", function(req, res) {
-//   db.Article.find({})
-//   .then(function(dbArticle){
-//     res.json(dbArticle);
-//   }).catch(function(err){
-//     res.json(err);
-//   })
-// });
-// app.get("/api/saved", function(req, res) {
-//   db.Article.find({
-//     saved: true
-//   })
-//   .then(function(dbArticle){
-//     res.json(dbArticle);
-//   }).catch(function(err){
-//     res.json(err);
-//   })
-// });
-
-// app.get("/api/articles/:id", function(req, res) {
-//   db.Article.find({_id: mongojs.ObjectId(req.params.id)})
-//   .populate('articles')  
-//   .then(function(dbArticle){
-//     res.json(dbArticle);
-//   }).catch(function(err){
-//     res.json(err);
-//   })
-// });
-
-// // route for saving/updating an Article's associated Note
-// app.put("/api/saved/:id", function(req, res) {
-
-//   db.Article.update({_id: mongojs.ObjectId(req.params.id)},{
-//     $set: {
-//       saved: true
-//     }
-//   }).then(function(dbArticle){
-//     res.json(dbArticle)
-//   }).catch(function(err){
-//     res.json(err);
-//   })
-
-// });
-// app.put("/api/unsaved/:id", function(req, res) {
-
-//   db.Article.update({_id: mongojs.ObjectId(req.params.id)},{
-//     $set: {
-//       saved: false
-//     }
-//   }).then(function(dbArticle){
-//     res.json(dbArticle)
-//   }).catch(function(err){
-//     res.json(err);
-//   })
-
-// });
 
 // app.post("/api/articles/:id", function(req, res) {
 
