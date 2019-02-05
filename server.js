@@ -10,28 +10,16 @@ const apiRoutes = require("./routes/apiRoutes");
 const PORT = process.env.PORT || 3000;
 
 
-var db = require('../models')
-
-db.Article.create(result)
-.then(function (dbArticle) {
-    console.log(dbArticle);
-    console.log('Saved Article.');
-    // res.send();
-})
-.catch(function (err) {
-    console.log('Error :: ', err);
-    // return res.json(err);
-});
-
 // Import Router Objects
 
 // DATABASE TOOLS
 const mongoose = require("mongoose");
+
 // const DATABASE_URL = process.env.MONGODB_URI || "mongodb://localhost/populate";
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/populate";
-
+console.log(MONGODB_URI);
 // Configure mongoose with MongoDB
 // mongoose.connect( DATABASE_URL, { useNewUrlParser: true, useCreateIndex: true } );
 
