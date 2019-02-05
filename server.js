@@ -7,6 +7,7 @@ const exphbs = require("express-handlebars"); // Handlebars module
 // ROUTES
 const htmlRoutes = require("./routes/htmlRoutes");
 const apiRoutes = require("./routes/apiRoutes");
+const PORT = process.env.PORT || 3000;
 
 // Import Router Objects
 
@@ -28,7 +29,6 @@ conn.once("open", error => console.log( "Mongoose Connection Successful" ))
 
 // Initialize App
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Configure Middleware for Web Server
 app.use( logger( "dev" ) );   // enable and configure logger
@@ -55,3 +55,4 @@ app.listen( PORT, () => console.log( "App is listening on " + PORT + "!" ));
 // server -> router -> controller -> api function || handlebars file
 
 
+//mongodb://heroku_72blqkgt:h7m20em0uue3vg2o2datj0i3vh@ds221435.mlab.com:21435/heroku_72blqkgt
