@@ -12,13 +12,15 @@ const apiRoutes = require("./routes/apiRoutes");
 
 // DATABASE TOOLS
 const mongoose = require("mongoose");
-const DATABASE_URL = process.env.MONGODB_URI || "mongodb://localhost/populate";
+// const DATABASE_URL = process.env.MONGODB_URI || "mongodb://localhost/populate";
 
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 // Configure mongoose with MongoDB
-mongoose.connect( DATABASE_URL, { useNewUrlParser: true, useCreateIndex: true } );
+// mongoose.connect( DATABASE_URL, { useNewUrlParser: true, useCreateIndex: true } );
+
+mongoose.connect(MONGODB_URI)
 const conn = mongoose.connection
 
 conn.on("error", error => console.log( "Mongoose Error" ))
