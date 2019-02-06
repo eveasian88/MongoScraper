@@ -24,7 +24,9 @@
     {{#if articles }}
       {{#each articles }}
         {{#if this.saved }}
+
           {{> article_partial }}
+
         {{/if }}
       {{/each}}
     {{/if }}
@@ -37,7 +39,9 @@
 
       {{#each articles}}
         {{#unless this.saved}}
+
           {{> article_partial }}
+          
         {{/unless}}
       {{/each }}
       </div>

@@ -1,10 +1,18 @@
 # MongoScraper
 
-Mongo Scraper is a web application that utilizes Mongoose and Cheerio to scrape articles from Thought.Co. Once the articles are scraped, users can save articles and make notes on the articles read. After the user has read the articles, they can remove them from the list.
+[Mongo Scraper](https://guarded-badlands-81732.herokuapp.com/)
+is a web application that utilizes Mongoose and Cheerio to scrape articles from ThoughtCo. Once the articles are scraped, users can save articles and make notes on the articles read. After the user has read the article, they can remove the articles from the list.
 
 
+## Getting Started
+
+- Clone Repo
+- Run command in Terminal "npm install"
+- Run command "npm start"
+- Run "ctrl + c" to exit mode
 
 
+![mongoScraper](public/images/mongoScraper.gif "mongoScraper")
 
 
 ## Technologies Utilized
@@ -18,8 +26,6 @@ Mongo Scraper is a web application that utilizes Mongoose and Cheerio to scrape 
         - Body-Parser
         - Cheerio
         - Express-Handlebars
-        - Mongo.js
-        - Mongoose
         - Morgan
 - Database
     - Mongoose
@@ -27,4 +33,6 @@ Mongo Scraper is a web application that utilizes Mongoose and Cheerio to scrape 
     - Heroku
 
 ## Author
+
+- Susye Weng-Reeder - *JavaScript/ Node.js/ Express/ Mongoose/ Heroku* - [Susye Weng-Reeder](https://eveasian88.github.io/Professional-Portfolio/ "Susye's Portfolio")
 

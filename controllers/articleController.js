@@ -65,6 +65,17 @@ const articleController = {
                 res.json(err);
             })
     },
+    getOne: function (req, res) {
+        const articleId = req.params.id;
+
+        db.Article.findOneAndUpdate({_id: articleId})
+            .populate('articles')
+            .then(function (dbArticle) {
+                res.json(dbArticle);
+            }).catch(function (err) {
+                res.json(err);
+            })
+    },
     create: function (req, res) {
         db.Article.create(req.body)
             .then(function (dbArticle) {
@@ -91,6 +102,23 @@ const articleController = {
           res.json(err);
         })
     },
+    unsave: function (req, res) {
+        const articleId = req.params.id
+          db.Article.update(
+            { _id: articleId },
+            {
+              $set: {
+                saved: false
+              }
+            }
+          )
+          .then(function(dbArticle){
+            res.json(dbArticle)
+          })
+          .catch(function(err){
+            res.json(err);
+          })
+      },
     delete: function (req, res) {
         const articleId = req.params.id
         db.Article.delete(
@@ -111,25 +139,3 @@ const articleController = {
 };
 
 module.exports = articleController;
-
-
-
-
-// app.post("/api/articles/:id", function(req, res) {
-
-//   db.Article.create(req.body)
-//     .then(function(dbArticle){
-//       return db.Article.findOneAndUpdate({},{
-//         $push: {
-//           articles: req.params.id
-//         }},
-//         {
-//           new: true
-//         });
-//     }).then(function(dbArticle){
-//       res.json(dbArticle)
-//     }).catch(function(err){
-//       res.json(err);
-//     })
-// });
-// };

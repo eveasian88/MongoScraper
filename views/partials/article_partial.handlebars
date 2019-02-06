@@ -8,11 +8,22 @@
       <p class='card-text'></p>
     </div>
     <div class='card-footer'>
+
       {{#unless this.saved }}
       <a data-id=" {{ this._id }} " class='save-btn btn btn-secondary'>
         Save Article
       </a>
-      {{/unless}}
+      {{/unless }}
+
+
+      {{#if this.unsaved }}
+      {{!-- {{#else this.unsaved }} --}}
+      <a data-id=" {{ this._id }} " class='unsave-btn btn btn-secondary'>
+        Unsave Article
+      </a>
+      {{!-- {{/else }} --}}
+      {{/if }}
+
     </div>
   </div>
 </div>
