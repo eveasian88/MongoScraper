@@ -1,7 +1,7 @@
 # MongoScraper
 
 [Mongo Scraper](https://guarded-badlands-81732.herokuapp.com/)
-is a web application that utilizes Cheerio and Mongoose to scrape articles from ThoughtCo. Once the articles are scraped, users can save articles and make notes on the articles read. After the user has read the article, they can remove the articles from the list.
+is a web application that utilizes Cheerio and Mongoose to scrape articles from ThoughtCo. Once the articles are scraped, users can save articles and make notes on the articles read. After the user has read the article, they can remove their notes and the articles from the list.
 
 
 ## Getting Started
